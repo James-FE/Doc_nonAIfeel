@@ -1,6 +1,7 @@
 # Humanizer-zh: AI 写作去痕工具（中文版）
 
 > **声明：**
+> - 上游仓库：[op7418/Humanizer-zh](https://github.com/op7418/Humanizer-zh)
 > - 本项目的核心文件翻译自 [blader/humanizer](https://github.com/blader/humanizer/tree/main)
 > - 实用工具部分（核心规则、快速检查清单、质量评分）参考了 [hardikpandya/stop-slop](https://github.com/hardikpandya/stop-slop)
 > - 原项目基于维基百科的 [Signs of AI writing](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing) 指南
@@ -9,7 +10,7 @@
 
 ## 项目简介
 
-Humanizer-zh 是一个用于去除文本中 AI 生成痕迹的工具，帮助你将 AI 生成的内容改写得更自然、更像人类书写的文本。
+Humanizer-zh 是一个用于去除文本中 AI 生成痕迹的工具，帮助你将 AI 生成的内容改写得更自然、更像人类书写的文本。除了单段中的套话、排比和 AI 词汇，它也关注长文档里的跨段重复、机械分点、相邻段落同构和术语口号化重复。
 
 本项目适用于：
 - 编辑和审阅 AI 生成的内容
@@ -122,7 +123,7 @@ git clone https://github.com/op7418/Humanizer-zh.git ~/.claude/skills/humanizer-
 
 ## 检测的 AI 写作模式
 
-本工具能够识别并修复 **24 种** AI 写作痕迹，分为四大类：
+本工具能够识别并修复 **30 种** AI 写作痕迹，分为五大类：
 
 ### 📝 内容模式（6种）
 1. 过度强调意义、遗产和更广泛的趋势
@@ -156,6 +157,14 @@ git clone https://github.com/op7418/Humanizer-zh.git ~/.claude/skills/humanizer-
 23. 过度限定
 24. 通用积极结论
 
+### 📄 文档级模式（6种）
+25. 跨段重复短语
+26. 相邻段落同构开头
+27. 机械分点和提纲腔
+28. 固定人机对照
+29. 同一抽象词密集收束
+30. DOCX 编辑中的技术性 AI 痕迹
+
 ## 文件说明
 
 - **`SKILL.md`** - 中文版技能定义文件
@@ -167,11 +176,12 @@ git clone https://github.com/op7418/Humanizer-zh.git ~/.claude/skills/humanizer-
 
 ### 基本流程
 
-1. **识别 AI 模式** - 对照 `SKILL.md` 中列出的 24 种模式扫描文本
-2. **重写问题片段** - 用自然的表达替换 AI 痕迹
-3. **保留核心含义** - 确保信息完整性
-4. **维持适当语调** - 匹配文本应有的风格
-5. **注入真实个性** - 让文字有"人味"
+1. **先看全文模式** - 长文档先扫描高频短语、重复句首、机械分点和固定对照
+2. **识别 AI 模式** - 对照 `SKILL.md` 中列出的 30 种模式扫描文本
+3. **重写问题片段** - 用自然的表达替换 AI 痕迹
+4. **保留核心含义** - 确保信息完整性，必要术语不要为了零重复而全部删除
+5. **维持适当语调** - 匹配文本应有的风格
+6. **注入真实个性** - 让文字有"人味"
 
 ### 关键原则
 
